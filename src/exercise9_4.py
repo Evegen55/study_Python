@@ -11,7 +11,7 @@ name = raw_input("Enter file:")
 if len(name) < 1 : name = "../data/mbox-short.txt"
 handle = open(name)
 d = dict()
-count = 0;
+count = 0
 for line in handle:
     splt = line.split()
     if len(splt) == 0 : continue
