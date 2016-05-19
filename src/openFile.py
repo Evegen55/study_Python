@@ -7,6 +7,7 @@
 #tab in the right side, set your "working directory" as "other" with giving
 #"the path" on which you want to run your code.
 
+#for python ver 3.4.4
 fo = open("romeo.txt", "r")
 
 count = 0
