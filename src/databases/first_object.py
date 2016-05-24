@@ -15,3 +15,8 @@ class PartyAnimal:
 
 an = PartyAnimal()
 an.party()
+an.party()
+an.party()
+an.party()
+
+print(dir(an))
