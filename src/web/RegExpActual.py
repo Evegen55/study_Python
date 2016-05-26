@@ -4,6 +4,8 @@ Created on 20 мая 2016 г.
 @author: Lartsev
 '''
 import re
+
+
 fo = open("regex_sum_241989.txt")
 a = 0
 for line in fo:
