@@ -1,0 +1,35 @@
+Microsoft Windows [Version 6.1.7601]
+(c) Корпорация Майкрософт (Microsoft Corp.), 2009. Все права защищены.
+
+C:\Users\Lartsev>sqlite3
+SQLite version 3.13.0 2016-05-18 10:57:30
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> attach "c:\Users\Lartsev\git\git\study_Python\data\emaildb.sqlite" as d1;
+sqlite> .databases
+seq  name             file
+
+---  ---------------  ---------------------------------------------------------
+
+0    main
+
+2    db1              c:\Users\Lartsev\git\git\study_Python\data\emaildb.sqlite
+
+sqlite> SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10
+   ...> ;
+cwen@iupui.edu|5
+zqian@umich.edu|4
+david.horwitz@uct.ac.za|4
+louis@media.berkeley.edu|3
+gsilver@umich.edu|3
+stephen.marquard@uct.ac.za|2
+rjlowe@iupui.edu|2
+wagnermr@iupui.edu|1
+antranig@caret.cam.ac.uk|1
+gopal.ramasammycook@gmail.com|1
+sqlite> .exit();
+Error: unknown command or invalid arguments:  "exit();". Enter ".help" for help
+sqlite> .exit
+
+C:\Users\Lartsev>
