@@ -12,7 +12,9 @@ hand = urllib.request.urlopen('https://freelansim.ru/tasks').read()
 soup = BeautifulSoup(hand, 'html.parser')
 tags = soup('a')
 for tag in tags:
-    print (tag.get('href', None))
+    print ('URL:',tag.get('href', None))
+    print ('Contents:',tag.contents[0])
+    print ('Attrs:',tag.attrs)
 #print(soup.prettify())
 
 
