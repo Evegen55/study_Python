@@ -1,5 +1,13 @@
 '''
 @author: Lartsev
+
+test it
+
+Enter file name: http://python-data.dr-chuck.net/known_by_Nayeli.html
+Enter position: 18
+Enter number of steps: 7
+Annika
+
 '''
 import urllib.request
 
