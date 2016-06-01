@@ -1,2 +1,6 @@
 # study_Python
-https://www.coursera.org/learn/python-data/home/welcome              https://www.coursera.org/learn/python/home/welcome
+
+- [Programming for Everybody (Getting Started with Python)] (https://www.coursera.org/learn/python/home/welcome)
+- [Data structures in Python] (https://www.coursera.org/learn/python-data/home/welcome)
+- [Using Python to Access Web Data] (https://www.coursera.org/learn/python-databases/home/welcome)
+- [Using Databases with Python] (https://www.coursera.org/learn/python-network-data/home/welcome)
