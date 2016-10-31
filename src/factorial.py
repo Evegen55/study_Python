@@ -1,6 +1,4 @@
 import math
-
-
 n = 10
 while (n>-1):
     f = math.factorial(n)
