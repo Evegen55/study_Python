@@ -4,28 +4,43 @@ Created on Oct 31, 2016
 @author: Evgenii_Lartcev
 '''
 from tkinter import *
-import tkFileDialog
+from tkinter import filedialog
+from tkinter.filedialog import asksaveasfilename
+
+root = Tk()
+
+# define options for opening or saving a file by default
+options = {}
+options['defaultextension'] = '.txt'
+options['filetypes'] = [('all files', '.*'), ('text files', '.txt')]
+options['initialdir'] = '~/'
+options['initialfile'] = 'myfile.txt'
+options['parent'] = root
+options['title'] = 'This is a title'
+
 
 def Quit(ev):
     global root
     root.destroy()
     
-def LoadFile(ev): 
-    fn = tkFileDialog.Open(root, filetypes = [('*.txt files', '.txt')]).show()
-    if fn == '':
+def LoadFile(ev):
+    # get filename
+    filename = asksaveasfilename(**options) 
+    file = open(filename, mode = 'r')
+    if filename is None:
         return
     textbox.delete('1.0', 'end') 
-    textbox.insert('1.0', open(fn, 'rt').read())
+    textbox.insert('1.0', open(file, 'r').read())
     
 def SaveFile(ev):
-    fn = tkFileDialog.SaveAs(root, filetypes = [('*.txt files', '.txt')]).show()
-    if fn == '':
+    # get filename
+    filename = asksaveasfilename(**options)     
+    if filename is None:
         return
-    if not fn.endswith(".txt"):
-        fn+=".txt"
-    open(fn, 'wt').write(textbox.get('1.0', 'end'))
+    file = open(filename, mode = 'w')   
+    file.write(textbox.get('1.0', 'end'))
+    file.close()
 
-root = Tk()
 
 panelFrame = Frame(root, height = 60, bg = 'gray')
 textFrame = Frame(root, height = 340, width = 600)
