@@ -6,6 +6,7 @@ Created on Oct 31, 2016
 from tkinter import *
 from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
+from tkinter.ttk import *
 
 root = Tk()
 
@@ -42,7 +43,7 @@ def SaveFile(ev):
     file.close()
 
 
-panelFrame = Frame(root, height = 60, bg = 'gray')
+panelFrame = Frame(root, height = 60)
 textFrame = Frame(root, height = 340, width = 600)
 
 panelFrame.pack(side = 'top', fill = 'x')
