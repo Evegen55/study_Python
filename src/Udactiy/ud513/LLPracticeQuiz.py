@@ -66,21 +66,14 @@ class LinkedList(object):
         while current:
             if current.value == value:
                 finded = self.get_position(count)
-                print "dfasdfa"
-                print finded.value 
-                               
-                               
-                self.head = current.next   #todo it for all cases 
-                
-                         
-                #break
+                findedBefore = self.get_position(count-1)
+                if findedBefore == None:
+                    self.head = current.next
+                else: 
+                    findedBefore.next = finded.next            
             current = current.next
-            count = count + 1
-            #before = self.get_position(count-1)
-            #if current.value == value:
-                           
-        #pass
-
+            count = count + 1        
+        
 # Test cases
 # Set up some Elements
 e1 = Element(1)
