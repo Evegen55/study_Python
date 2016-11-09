@@ -76,3 +76,29 @@ print stack.pop().value
 print stack.pop()
 stack.push(e4)
 print stack.pop().value
+
+
+"""
+By Zaal: Write a program that reads in a sequence of characters and prints them in reverse order. Use a stack.
+"""
+class ReadStringReverse(object):
+    def __init__(self,word=None):
+        self.word = word        
+    
+    def read_reverse(self):
+        i = 0
+        k = 0
+        wrd = self.word
+        stack = Stack(Element(wrd[i]))        
+        while i < len(wrd):
+            stack.push(Element(wrd[i]))
+            i = i + 1
+        while k < len(wrd):
+            print stack.pop().value
+            k = k + 1
+
+w1 = "REVERSE"
+       
+rev = ReadStringReverse(w1)
+rev.read_reverse()            
+        
