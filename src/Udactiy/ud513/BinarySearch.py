@@ -14,24 +14,21 @@ doesn't exist in the list."""
 
 def binary_search(input_array, value):
     """Your code goes here."""
-    l = len(input_array)
-    return rec_find(input_array, value, 0, l-1)
-
-
-def rec_find(array, value, upperBound, lowerBound):
-    curIn = (lowerBound + upperBound)/2;
-    #print curIn
-    #print lowerBound
-    #print upperBound
-    if(array[curIn]==value):
-        return curIn
-    elif(lowerBound == upperBound):
+    def rec_find(array, value, upperBound, lowerBound):
+        curIn = (lowerBound + upperBound)/2;    
+        if(array[curIn]==value):
+            return curIn
+        elif(lowerBound == upperBound):
+            return -1
+        elif(array[curIn] > value):
+            return rec_find(array, value, curIn+1, upperBound)            
+        else:
+            return rec_find(array, value, lowerBound, curIn-1)                               
         return -1
-    elif(array[curIn] > value):
-        return rec_find(array, value, curIn+1, upperBound)            
-    else:
-        return rec_find(array, value, lowerBound, curIn-1)                               
-    return -1 
+    return rec_find(input_array, value, 0, len(input_array)-1)
+
+
+
 
 test_list = [1,3,9,11,15,19,29]
 test_val1 = 25
