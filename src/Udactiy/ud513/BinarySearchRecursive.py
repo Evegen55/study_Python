@@ -15,7 +15,7 @@ doesn't exist in the list."""
 def binary_search(input_array, value):
     """Your code goes here."""
     def rec_find(array, value, lowerBound, upperBound):
-        curIn = (lowerBound + upperBound)/2;    
+        curIn = lowerBound + (len(array) - upperBound)/len(array); #for avoid stack overflow when we try work with Very Big Arrays
         if(array[curIn]==value):
             return curIn
         elif(lowerBound > upperBound):
