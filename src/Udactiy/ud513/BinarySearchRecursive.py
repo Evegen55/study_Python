@@ -14,13 +14,13 @@ doesn't exist in the list."""
 
 def binary_search(input_array, value):
     """Your code goes here."""
-    def rec_find(array, value, upperBound, lowerBound):
+    def rec_find(array, value, lowerBound, upperBound):
         curIn = (lowerBound + upperBound)/2;    
         if(array[curIn]==value):
             return curIn
-        elif(lowerBound == upperBound):
+        elif(lowerBound > upperBound):
             return -1
-        elif(array[curIn] > value):
+        elif(array[curIn] < value):
             return rec_find(array, value, curIn+1, upperBound)            
         else:
             return rec_find(array, value, lowerBound, curIn-1)                               
