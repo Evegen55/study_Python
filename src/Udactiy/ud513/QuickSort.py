@@ -21,14 +21,14 @@ def quicksort(array):
         array[start], array[i - 1] = array[i - 1], array[start]
         return i - 1     
        
-    def quicksort(array, start=0, end=None):
-        if end is None:
-            end = len(array) - 1
+    def quicksort(array, start, end):
         if end - start < 1:
             return
         idx_pivot = end
+        print "before partitioning", array, "index pivot: ",  idx_pivot,"index end: ", end,"index start: ", start        
         i = partitionIt(array, start, end, idx_pivot)
-        #print array, i, idx_pivot
+        print "after partitioning", array,"i: ", i, "index pivot: ",  idx_pivot,"index end: ", end,"index start: ", start
+        print
         quicksort(array, start, i - 1)
         quicksort(array, i + 1, end)
         
@@ -38,5 +38,5 @@ def quicksort(array):
 
      
        
-test = [21, 4, 1, 3, 9, 20, 25, 6, 21, 14]
+test = [21, 4, 1, 3, 8, 20, 25, 6, 21, 14]
 print quicksort(test)
