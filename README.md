@@ -1,4 +1,4 @@
-# study_Python
+# study Python with:
 
 - [COURSERA - Programming for Everybody (Getting Started with Python)] (https://www.coursera.org/learn/python/home/welcome)
 - [COURSERA - Data structures in Python] (https://www.coursera.org/learn/python-data/home/welcome)
