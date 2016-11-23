@@ -40,6 +40,24 @@ def length_and_normalized_vector():
     rouded_norm_vector = np.round(normalized_vector, 2)
     print rouded_norm_vector   
 
+def cross_product():
+    print 'cross product'
+    col_vec1 = np.array([[2], [-4], [1]])
+    col_vec2 = np.array([[2], [1], [-2]])    
+    print np.cross(col_vec1, col_vec2, 0, 0)
+    #the same result
+    #cross = np.array([col_vec1[1]*col_vec2[2] - col_vec1[2]*col_vec2[1], 
+    #                  col_vec1[2]*col_vec2[0] - col_vec1[0]*col_vec2[2],
+    #                  col_vec1[0]*col_vec2[1] - col_vec1[1]*col_vec2[0]])
+    #print cross
+def scalar_product():
+    print 'scalar product'
+    col_vec1 = np.array([[2], [-4], [1]])
+    col_vec2 = np.array([[2], [1], [-2]])
+    print np.dot(col_vec2.transpose(), col_vec1)
+
 vector_addition1()
 vector_addition2()
 length_and_normalized_vector()
+cross_product()
+scalar_product()
