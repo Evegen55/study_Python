@@ -75,20 +75,29 @@ Moreover, we are often interested in reaching a goal position in the world coord
 but can only give local commands to the robot i.e. we need to translate the global 
 to local commands in order to execute them. This can be achieved by applying the inverse rotation
 """
-
+def global_to_local_transformation():
+    R = np.array([[0, -1], [1, 0]])
+    Vglobal = 1.5 #Now assume you want to fly in Y(!!!) direction of your GLOBAL coordinate frame with speed 1.5 m/s.
+    TranslationVector = np.array([[0], [Vglobal]]) #first - X, second - Y
+    return R.transpose().dot(TranslationVector) #return speed in LOCAL ROBOTS coordinate frame
+    
+    
+    
 #Test
-print local_to_global_ransformation()
-print
-print transformation_concatenation()
-print
-print homogeneous_trans_matrix(90, 2, 3)
-print
-print "translation vector"
-print  translation_vector(2,3)
-print
-print "rotate matrixes"    
-print createRotateMatrix(30)
-print
-print createRotateMatrix(45)
-print
-print createRotateMatrix(90)
+print global_to_local_transformation()
+#print
+#print local_to_global_ransformation()
+#print
+#print transformation_concatenation()
+#print
+#print homogeneous_trans_matrix(90, 2, 3)
+#print
+#print "translation vector"
+#print  translation_vector(2,3)
+#print
+#print "rotate matrixes"    
+#print createRotateMatrix(30)
+#print
+#print createRotateMatrix(45)
+#print
+#print createRotateMatrix(90)
