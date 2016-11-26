@@ -85,19 +85,19 @@ def global_to_local_transformation():
     
 #Test
 print global_to_local_transformation()
-#print
-#print local_to_global_ransformation()
-#print
-#print transformation_concatenation()
-#print
-#print homogeneous_trans_matrix(90, 2, 3)
-#print
-#print "translation vector"
-#print  translation_vector(2,3)
-#print
-#print "rotate matrixes"    
-#print createRotateMatrix(30)
-#print
-#print createRotateMatrix(45)
-#print
-#print createRotateMatrix(90)
+print
+print local_to_global_ransformation()
+print
+print transformation_concatenation()
+print
+print homogeneous_trans_matrix(90, 2, 3)
+print
+print "translation vector"
+print  translation_vector(2,3)
+print
+print "rotate matrixes"
+print createRotateMatrix(30)
+print
+print createRotateMatrix(45)
+print
+print createRotateMatrix(90)
