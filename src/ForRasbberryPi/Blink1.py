@@ -1,5 +1,5 @@
 '''
-Created on 28 дек. 2016 г.
+Created on 28.12.2016
 '''
 import Rpi.GPIO as GPIO
 import time
