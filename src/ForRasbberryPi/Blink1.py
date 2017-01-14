@@ -4,9 +4,15 @@ Created on 28 дек. 2016 г.
 import Rpi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(13, GPIO.OUT)
+
+# Pin Definiton:
+ledPin = 16 # P1 pin 16 (Broadcom pin 23)
+
+GPIO.setup(ledPin, GPIO.OUT)
+# Initial state for LEDs:
+GPIO.output(ledPin, GPIO.LOW)
 while True:
-    GPIO.output(13, True)
+    GPIO.output(ledPin, GPIO.HIGH)
     time.sleep(1)
-    GPIO.output(13, True)
+    GPIO.output(ledPin, GPIO.HIGH)
     time.sleep(1)
