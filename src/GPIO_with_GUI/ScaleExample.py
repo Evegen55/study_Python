@@ -14,7 +14,7 @@ var = DoubleVar()
 scale = Scale( root, variable = var )
 scale.pack(anchor=CENTER)
 
-button = Button(root, text="Get Scale Value", command=sel)
+button = Button(root, text="Get Scale Value", command=sel, fg='green', bg='black')
 button.pack(anchor=CENTER)
 
 label = Label(root)
