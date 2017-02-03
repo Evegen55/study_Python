@@ -4,7 +4,7 @@ Created on Jan 31, 2017
 @author: Evgenii_Lartcev
 '''
 from Tkinter import *
-from GPIO.stepper import *
+from stepper import *
 
 #GUI definition
 root = Tk()
@@ -52,4 +52,4 @@ scaleDelay.pack(side = 'bottom')
 # start GUI
 center_window_with_dimensions(w, h)
 root.mainloop()
-clearGPIO() # cleanup all GPIO using incapsulating function from GPIO.stepper
+clearGPIO() # cleanup all GPIO using incapsulating function from RoboticArm.stepper
