@@ -31,8 +31,7 @@ def rotate_left():
     delay_in_secs_as_float = float (varDelay.get()) /1000    
     button_rotate_left.configure(repeatinterval = delay_in_millisecs_as_string)
     backwards(delay_in_secs_as_float, 1)
-    
-    print 'left ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
+    #print 'left ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
     
 # for 1 step with delay from scale ant the same time as delay to pushing button
 def rotate_right():
@@ -41,8 +40,7 @@ def rotate_right():
     
     button_rotate_right.configure(repeatinterval = delay_in_millisecs_as_string)
     forward(delay_in_secs_as_float, 1)
-    
-    print 'right ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
+    #print 'right ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
 
 # Buttons
 button_rotate_left = Button(root, text="Turn motor left", width=20,height=5, bg="green",fg="black",
@@ -63,4 +61,4 @@ scaleDelay.pack(side = 'bottom')
 # start GUI
 center_window_with_dimensions(w, h)
 root.mainloop()
-#clearGPIO() # cleanup all GPIO using incapsulating function from RoboticArm.stepper_L293_bipolar
+clearGPIO() # cleanup all GPIO using incapsulating function from RoboticArm.stepper_L293_bipolar
