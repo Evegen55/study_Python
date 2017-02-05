@@ -31,7 +31,7 @@ def rotate_left():
     delay_in_secs_as_float = float (varDelay.get()) /1000    
     button_rotate_left.configure(repeatinterval = delay_in_millisecs_as_string)
     backwards(delay_in_secs_as_float, 1)
-    #print 'left ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
+    print 'left ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
     
 # for 1 step with delay from scale ant the same time as delay to pushing button
 def rotate_right():
@@ -40,8 +40,21 @@ def rotate_right():
     
     button_rotate_right.configure(repeatinterval = delay_in_millisecs_as_string)
     forward(delay_in_secs_as_float, 1)
-    #print 'right ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
+    print 'right ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
 
+#TODO instead of two previous functions    
+def rotateTo(direction):
+    delay_in_millisecs_as_string = varDelay.get()
+    delay_in_secs_as_float = float (varDelay.get()) /1000
+    if direction == 'left':
+        button_rotate_left.configure(repeatinterval = delay_in_millisecs_as_string)
+        backwards(delay_in_secs_as_float, 1)
+        #print 'left ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
+    elif direction == 'right':
+        button_rotate_right.configure(repeatinterval = delay_in_millisecs_as_string)
+        forward(delay_in_secs_as_float, 1)  
+        #print 'right ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
+    
 # Buttons
 button_rotate_left = Button(root, text="Turn motor left", width=20,height=5, bg="green",fg="black",
                              command = rotate_left, repeatdelay="500", repeatinterval = "1000")
