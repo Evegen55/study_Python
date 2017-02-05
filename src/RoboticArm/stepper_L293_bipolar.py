@@ -26,6 +26,7 @@ GPIO.output(enable_pin, 1)
 def forward(delay, steps):  
     for i in range(0, steps):
         setStep(1, 0, 1, 0)
+        # Suspend execution of the current thread for the given number of seconds. 
         time.sleep(delay)
         setStep(0, 1, 1, 0)
         time.sleep(delay)

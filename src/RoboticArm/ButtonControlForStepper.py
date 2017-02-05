@@ -4,15 +4,13 @@ Created on Jan 31, 2017
 @author: Evgenii_Lartcev
 '''
 from Tkinter import *
-#from stepper import *
+from RoboticArm.stepper_L293_bipolar import *
 
 # GUI definition
 root = Tk()
 w = 600 # width for the Tk root
 h = 300 # height for the Tk root
 varDelay = StringVar()
-
-
 
 def center_window_with_dimensions(width=300, height=200):
     # get screen width and height
@@ -27,22 +25,24 @@ def updateAndPrintValues(duty):
     # print varDelay.get() #for test purpose
     return
 
-# for 1 step with delay from scale    
+# for 1 step with delay from scale ant the same time as delay to pushing button  
 def rotate_left():
-    #v = getDelay()
-    print 'left ' , varDelay.get() #for test purpose
-    button_rotate_left.configure(repeatinterval = varDelay.get())
-    #backwards(v, 1)
+    delay_in_millisecs_as_string = varDelay.get()
+    delay_in_secs_as_float = float (varDelay.get()) /1000    
+    button_rotate_left.configure(repeatinterval = delay_in_millisecs_as_string)
+    backwards(delay_in_secs_as_float, 1)
     
-# for 1 step with delay from scale 
+    print 'left ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
+    
+# for 1 step with delay from scale ant the same time as delay to pushing button
 def rotate_right():
-    #v = getDelay()
-    print 'right ' , varDelay.get() #for test purpose
-    button_rotate_right.configure(repeatinterval = varDelay.get())
-    #forward(v, 1)
+    delay_in_millisecs_as_string = varDelay.get()
+    delay_in_secs_as_float = float (varDelay.get()) /1000
     
-def getDelay():
-    return varDelay.get() / 100
+    button_rotate_right.configure(repeatinterval = delay_in_millisecs_as_string)
+    forward(delay_in_secs_as_float, 1)
+    
+    print 'right ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
 
 # Buttons
 button_rotate_left = Button(root, text="Turn motor left", width=20,height=5, bg="green",fg="black",
@@ -63,4 +63,4 @@ scaleDelay.pack(side = 'bottom')
 # start GUI
 center_window_with_dimensions(w, h)
 root.mainloop()
-#clearGPIO() # cleanup all GPIO using incapsulating function from RoboticArm.stepper
+#clearGPIO() # cleanup all GPIO using incapsulating function from RoboticArm.stepper_L293_bipolar
