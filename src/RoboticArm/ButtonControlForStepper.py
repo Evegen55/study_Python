@@ -25,15 +25,17 @@ def updateAndPrintValues(duty):
     # print varDelay.get() #for test purpose
     return
 
-# for 1 step with delay from scale ant the same time as delay to pushing button  
+# for 1 step to left or right if button fired once
+# for many steps if button fired longer time
+# get delay from the scale
+# delay in steps as the same as delay between firing button
 def rotate_left():
     delay_in_millisecs_as_string = varDelay.get()
     delay_in_secs_as_float = float (varDelay.get()) /1000    
     button_rotate_left.configure(repeatinterval = delay_in_millisecs_as_string)
     backwards(delay_in_secs_as_float, 1)
     print 'left ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
-    
-# for 1 step with delay from scale ant the same time as delay to pushing button
+
 def rotate_right():
     delay_in_millisecs_as_string = varDelay.get()
     delay_in_secs_as_float = float (varDelay.get()) /1000
@@ -42,7 +44,7 @@ def rotate_right():
     forward(delay_in_secs_as_float, 1)
     print 'right ' , varDelay.get(), delay_in_millisecs_as_string, delay_in_secs_as_float #for test purpose
 
-#TODO instead of two previous functions    
+#TODO instead of two previous functions
 def rotateTo(direction):
     delay_in_millisecs_as_string = varDelay.get()
     delay_in_secs_as_float = float (varDelay.get()) /1000
