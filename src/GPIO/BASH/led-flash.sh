@@ -9,3 +9,6 @@ do
   sudo echo 0 > /sys/class/gpio/gpio17/value
   sleep 0.5
 done
+
+# Don't forget to remove the GPIO pin from file access by using the following command:
+# $ sudo echo 17 > /sys/class/gpio/unexport
