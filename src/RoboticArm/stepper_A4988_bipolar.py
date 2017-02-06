@@ -47,7 +47,9 @@ GPIO.setup(Enable_pin, GPIO.OUT)
 GPIO.setup(Step_pin, GPIO.OUT)
 GPIO.setup(Direction_pin, GPIO.OUT)
 
-
+'''
+resolution may be 'full' (1), 'half' (1/2), 'quarter' (1/4), 'eighth' (1/8), 'sixteenth' (1/16)
+'''
 def setResolution(resolution):
     if resolution == 'full':
         GPIO.output(Microstep_MS1, 0)
@@ -70,14 +72,18 @@ def setResolution(resolution):
         GPIO.output(Microstep_MS2, 1)
         GPIO.output(Microstep_MS3, 1)
 
-
+'''
+direction may be 'CW' , 'CCW'
+'''
 def setDirection(direction):
-    if direction == 'clockwise':
+    if direction == 'CW':
         GPIO.output(Direction_pin, 0)
-    if direction == 'counterclock-wise':
+    if direction == 'CCW':
         GPIO.output(Direction_pin, 1)
 
-
+'''
+delay in milliseconds
+'''
 def doStepWithDelay(delay):
     GPIO.output(Step_pin, 1)
     time.sleep(delay)
