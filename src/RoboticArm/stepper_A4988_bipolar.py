@@ -47,6 +47,7 @@ GPIO.setup(Enable_pin, GPIO.OUT)
 GPIO.setup(Step_pin, GPIO.OUT)
 GPIO.setup(Direction_pin, GPIO.OUT)
 
+
 def setResolution(resolution):
     if resolution == 'full':
         GPIO.output(Microstep_MS1, 0)
@@ -69,19 +70,23 @@ def setResolution(resolution):
         GPIO.output(Microstep_MS2, 1)
         GPIO.output(Microstep_MS3, 1)
 
+
 def setDirection(direction):
     if direction == 'clockwise':
         GPIO.output(Direction_pin, 0)
     if direction == 'counterclock-wise':
         GPIO.output(Direction_pin, 1)
 
+
 def doStepWithDelay(delay):
     GPIO.output(Step_pin, 1)
     time.sleep(delay)
     GPIO.output(Step_pin, 0)
 
+
 def enableDriver():
     GPIO.output(Enable_pin, 1)
+
 
 def disableDriver():
     GPIO.output(Enable_pin, 0)
