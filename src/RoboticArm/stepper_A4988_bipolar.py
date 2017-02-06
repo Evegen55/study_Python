@@ -18,6 +18,19 @@ Microstep_MS2 = 13
 Microstep_MS3 = 15
 
 """
+Control inputs
+Each pulse to the STEP input corresponds to one microstep of the stepper motor in the direction selected by the DIR pin.
+Note that the STEP and DIR pins are not pulled to any particular voltage internally, so you should not
+leave either of these pins floating in your application. If you just want rotation in a single direction,
+you can tie DIR directly to VCC or GND. The chip has three different inputs for controlling its many power states:
+RST, SLP, and EN. For details about these power states, see the datasheet. Please note that the RST pin is floating;
+if you are not using the pin, you can connect it to the adjacent SLP pin on the PCB to bring it high and enable the board.
+"""
+Enable_pin = 16
+Step_pin = 18
+Direction_pin = 22
+
+"""
 MS1	    MS2	    MS3	    Microstep Resolution
 Low	    Low	    Low	    Full step
 High	Low	    Low	    Half step
@@ -30,6 +43,9 @@ High	High	High	Sixteenth step
 GPIO.setup(Microstep_MS1, GPIO.OUT)
 GPIO.setup(Microstep_MS2, GPIO.OUT)
 GPIO.setup(Microstep_MS3, GPIO.OUT)
+GPIO.setup(Enable_pin, GPIO.OUT)
+GPIO.setup(Step_pin, GPIO.OUT)
+GPIO.setup(Direction_pin, GPIO.OUT)
 
 def setResolution(resolution):
     if resolution == 'full':
@@ -52,3 +68,20 @@ def setResolution(resolution):
         GPIO.output(Microstep_MS1, 1)
         GPIO.output(Microstep_MS2, 1)
         GPIO.output(Microstep_MS3, 1)
+
+def setDirection(direction):
+    if direction == 'clockwise':
+        GPIO.output(Direction_pin, 0)
+    if direction == 'counterclock-wise':
+        GPIO.output(Direction_pin, 1)
+
+def doStepWithDelay(delay):
+    GPIO.output(Step_pin, 1)
+    time.sleep(delay)
+    GPIO.output(Step_pin, 0)
+
+def enableDriver():
+    GPIO.output(Enable_pin, 1)
+
+def disableDriver():
+    GPIO.output(Enable_pin, 0)
