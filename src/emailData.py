@@ -14,7 +14,7 @@ You can download the sample data at http://www.pythonlearn.com/code/mbox-short.t
 
 #for python ver 2.7
 fname = raw_input("Enter file name: ")
-if len(fname) < 1 : fname = "mbox-short.txt"
+if len(fname) < 1 : fname = "../data/mbox-short.txt"
 
 fh = open(fname)
 count = 0
