@@ -3,9 +3,9 @@ import glob
 
 import sys
 
-list = glob.glob("../data/letters/sent/1/*.eml")
+list = glob.glob("../../data/letters/sent/1/*.eml")
 count = 0
-f1 = open('../data/letters/sent/1/outputfile', 'w+')
+f1 = open('../../data/letters/sent/1/outputfile', 'w+')
 sys.stdout = f1
 s = set()
 for filePath in list:

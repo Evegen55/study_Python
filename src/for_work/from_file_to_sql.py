@@ -15,8 +15,8 @@ import sys
 
 
 def write_from_output_to_sql():
-    file = open('../data/letters/sent/1/outputfile')
-    f1 = open('../data/letters/sent/1/outputfile_MYSQL', 'w+')
+    file = open('../../data/letters/sent/1/outputfile')
+    f1 = open('../../data/letters/sent/1/outputfile_MYSQL', 'w+')
     sys.stdout = f1
     count = 0
     for line in file:
