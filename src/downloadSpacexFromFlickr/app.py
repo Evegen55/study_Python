@@ -29,18 +29,29 @@ def downloadPhotoToHomeFolder(url_done_download, username, cleared):
     else:
         print(directory, ' exists')
 
-    print('Downloading image: ', url_done_download)
     file_out = directory + '\\' + cleared + '.jpg'
-    urllib.request.urlretrieve(url_done_download, file_out)
+    if not os.path.exists(file_out):
+        print('Downloading image: ', url_done_download)
+        urllib.request.urlretrieve(url_done_download, file_out)
     pass
 
 
 def processPhotoStreamFile(file_out, cleared, username):
-    print('Finding the biggest file...')
+    print(f'Finding the biggest file in file {file_out}')
     text = read_file(file_out)
-    displayUrl = re.findall('"o":.*{"displayUrl.*"}', text)[0]
-    url_searched = re.findall('farm1.staticflickr.com.*' + str(cleared) + '_.*.jpg","w', displayUrl)[0]
-    lenght = len(url_searched) - 4
+    displayUrls = re.findall('"o":.*{"displayUrl.*"}', text)
+    if len(displayUrls) == 0:
+        displayUrls = re.findall('"k":.*{"displayUrl.*"}', text)
+    displayUrl = displayUrls[0]
+    # pat = 'farm1.staticflickr.com.*' + str(cleared) + '_.*.jpg","w'
+    pat = 'farm[0-9].staticflickr.com.*' + '_.*.jpg","w'
+    print('pattern is: ', pat)
+    url_searched_list = re.findall(pat, displayUrl)
+    if len(url_searched_list) == 0:
+        print("empty file???")
+    url_searched = url_searched_list[0]
+    # lenght = len(url_searched) - 4
+    lenght = 58
     url_searched_cleared = url_searched[0:lenght]
     url_done = 'http://' + url_searched_cleared.replace('\/', '/')
     url_done_download = 'http://' + url_searched_cleared.replace('\/', '/').replace('_o', '_o_d')
@@ -62,10 +73,10 @@ def goToPhotoStreamPageAndDownloadTheBiggestImage(photostreamURL, cleared, usern
     file_out = f'{directory}/{cleared}.html'
 
     if not os.path.exists(file_out):
-        print('Process url: ', photostreamURL)
+        print('Process photostream url: ', photostreamURL)
         r = requests.get(photostreamURL, headers)
         with open(file_out, 'w') as output_file:
-            output_file.write(r.text)
+            output_file.write(r.text.encode('utf-16'))
 
     processPhotoStreamFile(file_out, cleared, username)
     pass
@@ -80,6 +91,7 @@ def scan_user(username, num_pages):
     '''
     base_url = 'https://www.flickr.com/photos/%s' % username
     for page_number in range(num_pages):
+        page_number = page_number + 1
         url = base_url + '/page%d' % page_number  # download page to a file
 
         directory_username = home + '\\' + 'Downloads\\' + username
@@ -91,7 +103,7 @@ def scan_user(username, num_pages):
         file_out = f'{directory_username}/page{page_number}.html'
 
         if not os.path.exists(file_out):
-            print('Process url: ', url)
+            print('Process main url: ', url)
             r = requests.get(url, headers)
             with open(file_out, 'w') as output_file:
                 output_file.write(r.text)
@@ -111,12 +123,15 @@ def scan_user(username, num_pages):
             num_image = re.findall("/[0-9]*_", background_image)[0]  # /27684194488_
             lenght = len(num_image) - 1
             num_image_cleared = num_image[1:lenght]  # 27684194488
-            photostreamURL = f'https://www.flickr.com/photos/spacex/{num_image_cleared}/in/photostream/'
+            photostreamURL = f'https://www.flickr.com/photos/{username}/{num_image_cleared}/in/photostream/'
             # print(background_image, ' ', num_image, num_image_cleared, photostreamURL)
             goToPhotoStreamPageAndDownloadTheBiggestImage(photostreamURL, num_image_cleared, username)
 
 
 # test
 username1 = 'spacex'
-num_pages1 = 1
-scan_user(username1, num_pages1)
+num_pages1 = 7
+
+username2 = 'ming_chai'
+num_pages2 = 1
+scan_user(username2, num_pages2)
